@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "munyao-api",
-      "image": "munyao/spring-boot-example:latest",
+      "image": "munyao/spring-boot-example:05.10.2024.10.40.09",
       "essential": true,
       "memory": 512,
       "portMappings": [
