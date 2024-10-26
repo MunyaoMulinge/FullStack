@@ -1,8 +1,13 @@
-import { Wrap, WrapItem, Spinner, Text} from '@chakra-ui/react'
-import SidebarWithHeader from './components/shared/SideBar.jsx'
-import { useEffect, useState } from 'react'
-import { getCustomers } from "./services/client.js"
-import CardWithImage from "./components/Card"
+import {
+    Wrap,
+    WrapItem,
+    Spinner,
+    Text
+} from '@chakra-ui/react';
+import SidebarWithHeader from "./components/shared/SideBar.jsx";
+import { useEffect, useState } from 'react';
+import { getCustomers } from "./services/client.js";
+import CardWithImage from "./components/Card";
 import DrawerForm from "./components/DrawerForm.jsx";
 import {errorNotification} from "./services/notification.js";
 
@@ -13,7 +18,7 @@ const App = () => {
     const [err, setError] = useState("");
 
     const fetchCustomers = () => {
-        setLoading(true)
+        setLoading(true);
         getCustomers().then(res => {
             setCustomers(res.data)
         }).catch(err => {
@@ -26,12 +31,13 @@ const App = () => {
             setLoading(false)
         })
     }
+
     useEffect(() => {
-        fetchCustomers()
-    }, []);
+        fetchCustomers();
+    }, [])
 
     if (loading) {
-        return(
+        return (
             <SidebarWithHeader>
                 <Spinner
                     thickness='4px'
@@ -43,17 +49,19 @@ const App = () => {
             </SidebarWithHeader>
         )
     }
-    if(err){
+
+    if (err) {
         return (
             <SidebarWithHeader>
                 <DrawerForm
                     fetchCustomers={fetchCustomers}
                 />
-                <Text mt={5}>There was an error</Text>
+                <Text mt={5}>Ooops there was an error</Text>
             </SidebarWithHeader>
         )
     }
-    if(customers.length <= 0){
+
+    if(customers.length <= 0) {
         return (
             <SidebarWithHeader>
                 <DrawerForm
@@ -63,17 +71,19 @@ const App = () => {
             </SidebarWithHeader>
         )
     }
+
     return (
         <SidebarWithHeader>
             <DrawerForm
                 fetchCustomers={fetchCustomers}
             />
-            <Wrap justify='center' spacing={"30px"}>
+            <Wrap justify={"center"} spacing={"30px"}>
                 {customers.map((customer, index) => (
                     <WrapItem key={index}>
                         <CardWithImage
                             {...customer}
                             imageNumber={index}
+                            fetchCustomers={fetchCustomers}
                         />
                     </WrapItem>
                 ))}
@@ -81,4 +91,5 @@ const App = () => {
         </SidebarWithHeader>
     )
 }
+
 export default App;
