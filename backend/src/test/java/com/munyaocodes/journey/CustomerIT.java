@@ -43,7 +43,7 @@ public class CustomerIT {
         Gender gender = age % 2 == 0 ? Gender.MALE : Gender.FEMALE;
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                name, email, age, gender
+                name, email, "password", age, gender
         );
         // send a post request
         webTestClient.post()
@@ -69,7 +69,7 @@ public class CustomerIT {
 
         // make sure that customer is present
         Customer expectedCustomer = new Customer(
-                name, email, age,
+                name, email, "password", age,
                 gender);
 
         assertThat(allCustomers)
@@ -108,7 +108,7 @@ public class CustomerIT {
         Gender gender = age % 2 == 0 ? Gender.MALE : Gender.FEMALE;
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                name, email, age, gender
+                name, email, "password", age, gender
         );
 
         // send a post request
@@ -170,7 +170,7 @@ public class CustomerIT {
         Gender gender = age % 2 == 0 ? Gender.MALE : Gender.FEMALE;
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                name, email, age, gender
+                name, email, "password", age, gender
         );
 
         // send a post request
@@ -231,7 +231,7 @@ public class CustomerIT {
                 .getResponseBody();
 
         Customer expected = new Customer(
-                id, newName, email, age,
+                id, newName, email, "password", age,
                 gender);
 
         assertThat(updatedCustomer).isEqualTo(expected);
