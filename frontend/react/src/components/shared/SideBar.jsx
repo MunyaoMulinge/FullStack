@@ -83,13 +83,15 @@ const SidebarContent = ({onClose, ...rest}) => {
             {...rest}>
             <Flex h="20" flexDirection="column" alignItems="center" mx="8" mb={75} mt={2} justifyContent="space-between">
                 <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold" mb={5}>
-                    Dashboard
+                        Dashboard
                 </Text>
                 <Image
-                    borderRadius='full'
-                    boxSize='75px'
-                    src='https://user-images.githubusercontent.com/40702606/210880158-e7d698c2-b19a-4057-b415-09f48a746753.png'
-                    alt='Amigoscode'
+                    borderRadius='50%'
+                    width='75px'
+                    height='75px'
+                    objectFit='cover'
+                    src='https://images.unsplash.com/photo-1730829807497-9c5b8c9c41c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                    alt='Close-up with Flowers'
                 />
                 <CloseButton display={{base: 'flex', md: 'none'}} onClick={onClose}/>
             </Flex>
@@ -186,7 +188,7 @@ const MobileNav = ({onOpen, ...rest}) => {
                                     alignItems="flex-start"
                                     spacing="1px"
                                     ml="2">
-                                    <Text fontSize="sm">Justina Clark</Text>
+                                    <Text fontSize="sm">Munyao Mulinge</Text>
                                     <Text fontSize="xs" color="gray.600">
                                         Admin
                                     </Text>
