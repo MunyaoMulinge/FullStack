@@ -32,6 +32,7 @@ import {
     FiStar,
     FiTrendingUp
 } from 'react-icons/fi';
+import {useAuth} from "../context/AuthContext.jsx";
 
 const LinkItems = [
     {name: 'Home', icon: FiHome},
@@ -136,6 +137,7 @@ const NavItem = ({icon, children, ...rest}) => {
 };
 
 const MobileNav = ({onOpen, ...rest}) => {
+    const { logOut, customer } = useAuth()
     return (
         <Flex
             ml={{base: 0, md: 60}}
@@ -183,16 +185,20 @@ const MobileNav = ({onOpen, ...rest}) => {
                                         'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
                                     }
                                 />
-                                <VStack
-                                    display={{base: 'none', md: 'flex'}}
-                                    alignItems="flex-start"
-                                    spacing="1px"
-                                    ml="2">
-                                    <Text fontSize="sm">Munyao Mulinge</Text>
-                                    <Text fontSize="xs" color="gray.600">
-                                        Admin
-                                    </Text>
-                                </VStack>
+                                {customer && (
+                                    <VStack
+                                        display={{base: 'none', md: 'flex'}}
+                                        alignItems="flex-start"
+                                        spacing="1px"
+                                        ml="2">
+                                        <Text fontSize="sm">{customer?.username}</Text>
+                                        {customer.roles && customer.roles.map((role, id) => (
+                                            <Text key={id} fontSize="xs" color="gray.600">
+                                                {role}
+                                            </Text>
+                                        ))}
+                                    </VStack>
+                                )}
                                 <Box display={{base: 'none', md: 'flex'}}>
                                     <FiChevronDown/>
                                 </Box>
@@ -205,7 +211,9 @@ const MobileNav = ({onOpen, ...rest}) => {
                             <MenuItem>Settings</MenuItem>
                             <MenuItem>Billing</MenuItem>
                             <MenuDivider/>
-                            <MenuItem>Sign out</MenuItem>
+                            <MenuItem onClick={logOut}>
+                                Sign out
+                            </MenuItem>
                         </MenuList>
                     </Menu>
                 </Flex>
