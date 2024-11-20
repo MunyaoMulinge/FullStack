@@ -25,21 +25,17 @@ import {
 import {
     FiBell,
     FiChevronDown,
-    FiCompass,
     FiHome,
     FiMenu,
     FiSettings,
-    FiStar,
-    FiTrendingUp
+    FiUsers
 } from 'react-icons/fi';
 import {useAuth} from "../context/AuthContext.jsx";
 
 const LinkItems = [
-    {name: 'Home', icon: FiHome},
-    {name: 'Trending', icon: FiTrendingUp},
-    {name: 'Explore', icon: FiCompass},
-    {name: 'Favourites', icon: FiStar},
-    {name: 'Settings', icon: FiSettings},
+    {name: 'Home', route: '/dashboard', icon: FiHome},
+    {name: 'Customers', route: '/dashboard/customers',  icon: FiUsers},
+    {name: 'Settings', route: '/dashboard/settings', icon: FiSettings},
 ];
 
 export default function SidebarWithHeader({children}) {
@@ -84,20 +80,18 @@ const SidebarContent = ({onClose, ...rest}) => {
             {...rest}>
             <Flex h="20" flexDirection="column" alignItems="center" mx="8" mb={75} mt={2} justifyContent="space-between">
                 <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold" mb={5}>
-                        Dashboard
+                    Dashboard
                 </Text>
                 <Image
-                    borderRadius='50%'
-                    width='75px'
-                    height='75px'
-                    objectFit='cover'
-                    src='https://images.unsplash.com/photo-1730829807497-9c5b8c9c41c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-                    alt='Close-up with Flowers'
+                    borderRadius='full'
+                    boxSize='75px'
+                    src='https://user-images.githubusercontent.com/40702606/210880158-e7d698c2-b19a-4057-b415-09f48a746753.png'
+                    alt='Amigoscode'
                 />
                 <CloseButton display={{base: 'flex', md: 'none'}} onClick={onClose}/>
             </Flex>
             {LinkItems.map((link) => (
-                <NavItem key={link.name} icon={link.icon}>
+                <NavItem key={link.name} route={link.route} icon={link.icon}>
                     {link.name}
                 </NavItem>
             ))}
@@ -105,34 +99,34 @@ const SidebarContent = ({onClose, ...rest}) => {
     );
 };
 
-const NavItem = ({icon, children, ...rest}) => {
+const NavItem = ({icon, route, children, ...rest}) => {
     return (
-        // <Link href="frontend/react/src/components/shared#" style={{textDecoration: 'none'}} _focus={{boxShadow: 'none'}}>
-        <Flex
-            align="center"
-            p="4"
-            mx="4"
-            borderRadius="lg"
-            role="group"
-            cursor="pointer"
-            _hover={{
-                bg: 'red.400',
-                color: 'white',
-            }}
-            {...rest}>
-            {icon && (
-                <Icon
-                    mr="4"
-                    fontSize="16"
-                    _groupHover={{
-                        color: 'white',
-                    }}
-                    as={icon}
-                />
-            )}
-            {children}
-        </Flex>
-        // </Link>
+        <Link href={route} style={{textDecoration: 'none'}} _focus={{boxShadow: 'none'}}>
+            <Flex
+                align="center"
+                p="4"
+                mx="4"
+                borderRadius="lg"
+                role="group"
+                cursor="pointer"
+                _hover={{
+                    bg: 'blue.400',
+                    color: 'white',
+                }}
+                {...rest}>
+                {icon && (
+                    <Icon
+                        mr="4"
+                        fontSize="16"
+                        _groupHover={{
+                            color: 'white',
+                        }}
+                        as={icon}
+                    />
+                )}
+                {children}
+            </Flex>
+        </Link>
     );
 };
 
@@ -185,20 +179,18 @@ const MobileNav = ({onOpen, ...rest}) => {
                                         'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
                                     }
                                 />
-                                {customer && (
-                                    <VStack
-                                        display={{base: 'none', md: 'flex'}}
-                                        alignItems="flex-start"
-                                        spacing="1px"
-                                        ml="2">
-                                        <Text fontSize="sm">{customer?.username}</Text>
-                                        {customer.roles && customer.roles.map((role, id) => (
-                                            <Text key={id} fontSize="xs" color="gray.600">
-                                                {role}
-                                            </Text>
-                                        ))}
-                                    </VStack>
-                                )}
+                                <VStack
+                                    display={{base: 'none', md: 'flex'}}
+                                    alignItems="flex-start"
+                                    spacing="1px"
+                                    ml="2">
+                                    <Text fontSize="sm">{customer?.username}</Text>
+                                    {customer?.roles?.map((role, id) => (
+                                        <Text key={id} fontSize="xs" color="gray.600">
+                                            {role}
+                                        </Text>
+                                    ))}
+                                </VStack>
                                 <Box display={{base: 'none', md: 'flex'}}>
                                     <FiChevronDown/>
                                 </Box>
