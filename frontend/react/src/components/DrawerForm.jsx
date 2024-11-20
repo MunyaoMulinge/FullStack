@@ -10,7 +10,7 @@ import {
     useDisclosure
 } from "@chakra-ui/react";
 
-import CreateCustomerForm from "./customer/CreateCustomerForm.jsx";
+import CreateCustomerForm from "./shared/CreateCustomerForm.jsx";
 
 const AddIcon = () => "+";
 const CloseIcon = () => "x";

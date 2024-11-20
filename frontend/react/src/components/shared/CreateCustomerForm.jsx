@@ -40,7 +40,7 @@ const MySelect = ({label, ...props}) => {
 };
 
 // And now we can use these
-const CreateCustomerForm = ({ fetchCustomers }) => {
+const CreateCustomerForm = ({ onSuccess }) => {
     return (
         <>
             <Formik
@@ -63,7 +63,7 @@ const CreateCustomerForm = ({ fetchCustomers }) => {
                         .max(100, 'Must be less than 100 years of age')
                         .required(),
                     password: Yup.string()
-                        .min(4, 'Must be more than 4 characters')
+                        .min(4, 'Must be 4 characters or more')
                         .max(15, 'Must be 15 characters or less')
                         .required('Required'),
                     gender: Yup.string()
@@ -82,7 +82,7 @@ const CreateCustomerForm = ({ fetchCustomers }) => {
                                 "Customer saved",
                                 `${customer.name} was successfully saved`
                             )
-                            fetchCustomers();
+                            onSuccess(res.headers["authorization"]);
                         }).catch(err => {
                         console.log(err);
                         errorNotification(
@@ -122,7 +122,7 @@ const CreateCustomerForm = ({ fetchCustomers }) => {
                                 label="Password"
                                 name="password"
                                 type="password"
-                                placeholder={"Pick a secure password"}
+                                placeholder={"pick a secure password"}
                             />
 
                             <MySelect label="Gender" name="gender">

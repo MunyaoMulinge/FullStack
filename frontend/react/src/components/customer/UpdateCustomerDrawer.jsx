@@ -9,8 +9,8 @@ import {
     DrawerOverlay,
     useDisclosure
 } from "@chakra-ui/react";
-import CreateCustomerForm from "./CreateCustomerForm.jsx";
 import UpdateCustomerForm from "../shared/UpdateCustomerForm.jsx";
+
 const CloseIcon = () => "x";
 
 const UpdateCustomerDrawer = ({ fetchCustomers, initialValues, customerId }) => {
