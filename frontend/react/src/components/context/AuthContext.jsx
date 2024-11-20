@@ -1,10 +1,16 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+    createContext,
+    useContext,
+    useEffect,
+    useState
+} from "react";
 import {getCustomers, login as performLogin} from "../../services/client.js";
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from 'jwt-decode';
 
 const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
+
     const [customer, setCustomer] = useState(null);
 
     const setCustomerFromToken = () => {
