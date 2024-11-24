@@ -2,4 +2,7 @@
 
 <button (click)="clickMe()">Click Me</button>
 
-<p>Your name is: {{ inputValue }}</p>
+<p *ngIf="inputValue.length >= 8">Your name is: {{ inputValue }}</p>
+
+<p *ngFor="let elem of msgList">{{ elem }}</p>
+
