@@ -3,20 +3,34 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MyFirstComponent } from './my-first-component/my-first.component';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { CustomerComponent } from './components/customer/customer.component';
+import { MenuBarComponent } from './components/menu-bar/menu-bar.component';
+import { AvatarModule } from 'primeng/avatar';
+import { MenuItemComponent } from './components/menu-item/menu-item.component';
+import { HeaderBarComponent } from './components/header-bar/header-bar.component';
+import { ButtonModule } from 'primeng/button';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    MyFirstComponent
+    CustomerComponent,
+    MenuBarComponent,
+    MenuItemComponent,
+    HeaderBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    InputTextModule,
+    AvatarModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
