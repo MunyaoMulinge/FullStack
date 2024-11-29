@@ -21,15 +21,7 @@ import java.util.Objects;
 )
 public class Customer implements UserDetails {
     @Id
-    @SequenceGenerator(
-            name = "customer_id_seq",
-            sequenceName = "customer_id_seq",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "customer_id_seq"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(
             nullable = false
