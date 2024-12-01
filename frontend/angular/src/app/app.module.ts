@@ -12,6 +12,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { HeaderBarComponent } from './components/header-bar/header-bar.component';
 import { ButtonModule } from 'primeng/button';
+import { MenuModule } from 'primeng/menu';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ButtonModule } from 'primeng/button';
     FormsModule,
     InputTextModule,
     AvatarModule,
-    ButtonModule
+    ButtonModule,
+    MenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
