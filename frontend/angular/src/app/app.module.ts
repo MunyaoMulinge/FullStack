@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +13,6 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { HeaderBarComponent } from './components/header-bar/header-bar.component';
 import { ButtonModule } from 'primeng/button';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +23,7 @@ import { ButtonModule } from 'primeng/button';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     InputTextModule,
@@ -33,4 +34,3 @@ import { ButtonModule } from 'primeng/button';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
