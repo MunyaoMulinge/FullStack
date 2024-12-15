@@ -58,6 +58,7 @@
     </div>
     <button
         [disabled]="!isCustomerValid"
+        (click)="onSubmit()"
         pButton
         label="Submit"
         class="w-full"
