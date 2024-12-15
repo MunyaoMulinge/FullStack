@@ -1,0 +1,38 @@
+<p-card [style]="{width: '316px'}" styleClass="p-card-shadow text-center">
+    <ng-template pTemplate="header">
+        <div>
+            <img class="border-round-top cover"
+                height="120"
+                alt="Card"
+                src="https://images.unsplash.com/photo-1732624697703-c5b0d3110cb4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            >
+        </div>
+        <div class="flex justify-content-center" style="margin-top: -50px;">
+            <img
+            class="customer-avatar"
+            src="https://images.unsplash.com/photo-1732624697703-c5b0d3110cb4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            >
+        </div>
+    </ng-template>
+    <ng-template pTemplate="content">
+        <p-badge
+            [value]="'' + (customerIndex + 1)"
+        ></p-badge>
+        <h2>{{customer.name}}</h2>
+        <p class="text-gray-600">{{customer.email}}</p>
+        <p class="text-gray-600">{{customer.age}} | {{customer.gender}}</p>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button
+            pButton
+            label="Update"
+            class="p-button-secondary p-button-outlined p-button-rounded"
+        ></button>
+        
+        <button
+            pButton
+            label="Delete"
+            class="p-button-danger p-button-outlined p-button-rounded ml-3"
+        ></button>
+    </ng-template>
+</p-card>
