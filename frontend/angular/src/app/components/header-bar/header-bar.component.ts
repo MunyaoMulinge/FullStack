@@ -14,4 +14,12 @@ export class HeaderBarComponent {
         {separator: true},
         { label: 'Sign Out', icon: 'pi pi-sign-out' }
     ];
+
+    get username(): string {
+        return '--';
+    }
+
+    get userRole(): string {
+        return '--';
+    }
 }
