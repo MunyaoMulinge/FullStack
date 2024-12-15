@@ -13,6 +13,15 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { HeaderBarComponent } from './components/header-bar/header-bar.component';
 import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
+import { SidebarModule } from 'primeng/sidebar';
+import { ManageCustomerComponent } from './components/manage-customer/manage-customer.component';
+import { LoginComponent } from './components/login/login.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { MessageModule } from 'primeng/message';
+import { HttpInterceptorService } from './services/interceptor/http-interceptor.service';
+import { CustomerCardComponent } from './components/customer-card/customer-card.component';
+import { CardModule } from 'primeng/card';
+import { BadgeModule } from 'primeng/badge';
 
 @NgModule({
   declarations: [
@@ -20,7 +29,10 @@ import { MenuModule } from 'primeng/menu';
     CustomerComponent,
     MenuBarComponent,
     MenuItemComponent,
-    HeaderBarComponent
+    HeaderBarComponent,
+    ManageCustomerComponent,
+    LoginComponent,
+    CustomerCardComponent
   ],
   imports: [
     BrowserModule,
@@ -30,9 +42,20 @@ import { MenuModule } from 'primeng/menu';
     InputTextModule,
     AvatarModule,
     ButtonModule,
-    MenuModule
+    MenuModule,
+    SidebarModule,
+    HttpClientModule,
+    MessageModule,
+    BadgeModule,
+    CardModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
