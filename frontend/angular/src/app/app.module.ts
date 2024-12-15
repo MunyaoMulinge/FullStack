@@ -24,6 +24,8 @@ import { CardModule } from 'primeng/card';
 import { BadgeModule } from 'primeng/badge';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { MessageService } from 'primeng/api';
     MessageModule,
     BadgeModule,
     CardModule,
-    ToastModule
+    ToastModule,
+    ConfirmDialogModule
   ],
   providers: [
     {
@@ -58,7 +61,8 @@ import { MessageService } from 'primeng/api';
       useClass: HttpInterceptorService,
       multi: true
     },
-    MessageService
+    MessageService,
+    ConfirmationService
   ],
   bootstrap: [AppComponent]
 })

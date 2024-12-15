@@ -1,15 +1,26 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { CustomerRegistrationRequest } from 'src/app/models/customer-registration-request';
+import { CustomerUpdateRequest } from 'src/app/models/customer-update-request';
 
 @Component({
   selector: 'app-manage-customer',
   templateUrl: './manage-customer.component.html',
   styleUrls: ['./manage-customer.component.scss']
 })
-export class ManageCustomerComponent {
+export class ManageCustomerComponent implements OnInit{
+
+  ngOnInit(): void {
+    if (this.operation === 'update') {
+      this.title = 'Update Customer';
+  }
+}
 
   @Input()
   customer: CustomerRegistrationRequest = {};
+
+  @Input()
+  operation: 'create' | 'update' = 'create';
+  title = 'New Customer';
 
   @Output()
   submit: EventEmitter<CustomerRegistrationRequest> = new EventEmitter<CustomerRegistrationRequest>();
