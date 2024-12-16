@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { AuthenticationResponse } from 'src/app/models/authentication-response';
 
@@ -9,11 +10,30 @@ import { AuthenticationResponse } from 'src/app/models/authentication-response';
 })
 export class HeaderBarComponent {
 
+  constructor(
+    private router: Router
+  ) { }
+
     items: Array<MenuItem> = [
-        { label: 'Profile', icon: 'pi pi-user' },
-        { label: 'Settings', icon: 'pi pi-cog' },
-        {separator: true},
-        { label: 'Sign Out', icon: 'pi pi-sign-out' }
+        { 
+          label: 'Profile', 
+          icon: 'pi pi-user' 
+        },
+        { 
+          label: 'Settings', 
+          icon: 'pi pi-cog' 
+        },
+        {
+          separator: true
+        },
+        { 
+          label: 'Sign Out', 
+          icon: 'pi pi-sign-out', 
+          command: () => {
+            localStorage.clear();
+            this.router.navigate(['login']);
+          }
+        },
     ];
 
     get username(): string {
