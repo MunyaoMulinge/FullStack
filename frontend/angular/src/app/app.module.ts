@@ -26,6 +26,7 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ConfirmationService } from 'primeng/api';
     HeaderBarComponent,
     ManageCustomerComponent,
     LoginComponent,
-    CustomerCardComponent
+    CustomerCardComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
