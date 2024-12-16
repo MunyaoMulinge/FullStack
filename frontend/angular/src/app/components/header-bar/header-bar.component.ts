@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { AuthenticationResponse } from 'src/app/models/authentication-response';
 
 @Component({
   selector: 'app-header-bar',
@@ -16,10 +17,24 @@ export class HeaderBarComponent {
     ];
 
     get username(): string {
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+          const authResponse: AuthenticationResponse = JSON.parse(storedUser);
+          if (authResponse && authResponse.customerDTO && authResponse.customerDTO.username) {
+              return authResponse.customerDTO.username;
+          }
+      } 
         return '--';
     }
 
     get userRole(): string {
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+          const authResponse: AuthenticationResponse = JSON.parse(storedUser);
+          if (authResponse && authResponse.customerDTO && authResponse.customerDTO.roles) {
+              return authResponse.customerDTO.roles[0];
+          }
+      } 
         return '--';
     }
 }
